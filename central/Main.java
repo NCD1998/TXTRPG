@@ -9,6 +9,10 @@ import dataComs.StatsManager;
 import graphical.WindowInit;
 
 public class Main {
+	//Metadata
+	private final static String title = "TXTRPG";
+	private final static String version = "0.0.1-A";
+	
 	//Start Main Console Data Controller
 	public static MainConsoleControl mCC = new MainConsoleControl();
 	//Create reference to the console Output stream
@@ -23,6 +27,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) throws InterruptedException {
+		System.out.println(title +"! Version: " + version + " -NCD1998");
 		//Start GUI and GUI threads
 		WindowInit.initWin();
 		//Delay for GUI initialization catching up
