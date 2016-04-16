@@ -59,22 +59,23 @@ public class Inventory {
 			boolean isAlreadyWearing = false;
 			for(int x = 0; x < armor.size(); x++){
 				if(armor.get(x).getArmorType().equals(item.getArmorType())){
-					Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " was already wearing a similar item as " + item.getName());
-					return 1;
-				}else{
-					Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " equiped " + item.getName());
-					armor.add(item);
-					item.equip();
-					inventory.remove(item);
-					return 0;
+					isAlreadyWearing = true;
 				}
+			}
+			if(isAlreadyWearing){
+				Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " was already wearing a similar item as " + item.getName());
+				return 1;
+			}else{
+				Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " equiped " + item.getName());
+				armor.add(item);
+				item.equip();
+				inventory.remove(item);
+				return 0;
 			}
 		}else{
 			Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " could not equip non armor item  " + item.getName());
 			return 2;
 		}
-		Main.log.log(NELOGLEVELS.warning, "[Inventory]: Something really bad happened when " + owner + " tried to equip " + item.getName());
-		return 3;
 	}
 	/*
 	 * Returns: 0 if it worked
