@@ -10,12 +10,27 @@ abstract public class Item {
 	private String name;
 	private double weight;
 	private final boolean isarmor;
+	private final boolean consumeOnUse;
+	private int uses;
+	private double[] meleeAttackDamage;
 	
-	public Item(String name, double weight, boolean isarmor, boolean isaccessory){
+	public Item(String name, double weight, boolean isarmor, boolean isaccessory, boolean consumeOnUse, int uses, double meleeAttackDamage){
 		this.name = name;
 		this.weight = weight;
 		this.isarmor = isarmor;
 		this.isAccessory = isaccessory;
+		this.consumeOnUse = consumeOnUse;
+		this.uses = uses;
+	}
+	public Item(String name, double weight, boolean isarmor, boolean isaccessory, boolean consumeOnUse, int uses){
+		this.name = name;
+		this.weight = weight;
+		this.isarmor = isarmor;
+		this.isAccessory = isaccessory;
+		this.consumeOnUse = consumeOnUse;
+		this.uses = uses;
+		this.meleeAttackDamage = new double[1];
+		this.meleeAttackDamage[0] = 1;
 	}
 
 	//Called on pickup
@@ -38,8 +53,7 @@ abstract public class Item {
 	}
 
 	public boolean isArmor() {
-		// TODO Auto-generated method stub
-		return false;
+		return isarmor;
 	}
 
 	public EnumArmorType getArmorType() {
@@ -62,6 +76,14 @@ abstract public class Item {
 	public void dequip(CreatureBase owner) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public double[] meleeAttackDamage(){
+		return meleeAttackDamage;
+	}
+	public double[] meleeAttackDamage(CreatureBase owner) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

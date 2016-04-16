@@ -31,13 +31,15 @@ public class Main {
 		//Start GUI and GUI threads
 		WindowInit.initWin();
 		//Delay for GUI initialization catching up
-		Thread.sleep(700);
+		Thread.sleep(1000);
 		//Create Logger
 		log = new NELOG(loggerLimit, activeLogger, loggerUseCMD, mCC);
 		//Send Logger Initiation Message
 		log.log(NELOGLEVELS.debug, "Logger Activated: Level- " + loggerLimit.getName(loggerLimit) + " Using CMD: " + activeLogger);
 		//Start the help menu
 		StatsManager.setOption("Help Menu");
+		
+		
 
 				
 		

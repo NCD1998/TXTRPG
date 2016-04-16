@@ -14,7 +14,7 @@ public class Armor extends Item {
 	
 	
 	public Armor(String name, double weight, EnumArmorType type, double castingDamage, double protection) {
-		super(name, weight, true, false);
+		super(name, weight, true, false, false, 0);
 		this.type = type;
 		this.resistances = new EnumDamageTypes[0];
 		this.resistanceAmts = new int[0];
@@ -23,7 +23,7 @@ public class Armor extends Item {
 	}
 	
 	public Armor(String name, double weight, EnumArmorType type, double castingDamage, double protection, EnumDamageTypes[] resistances, int[] resistanceAmts) {
-		super(name, weight, true, false);
+		super(name, weight, true, false, false, 0);
 		this.type = type;
 		this.resistances = resistances;
 		this.resistanceAmts = resistanceAmts;
