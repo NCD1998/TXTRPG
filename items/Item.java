@@ -4,7 +4,7 @@ import creatures.CreatureBase;
 import reference.EnumAccessoryTypes;
 import reference.EnumArmorType;
 
-public class Item {
+abstract public class Item {
 
 	private final boolean isAccessory;
 	private String name;
@@ -46,17 +46,22 @@ public class Item {
 		return EnumArmorType.none;
 	}
 
-	public void equip() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public boolean isAccessory() {
 		return isAccessory;
 	}
 
 	public EnumAccessoryTypes getAccessoryType() {
 		return EnumAccessoryTypes.none;
+	}
+
+	public void equip(CreatureBase owner) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void dequip(CreatureBase owner) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

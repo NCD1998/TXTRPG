@@ -68,7 +68,7 @@ public class Inventory {
 			}else{
 				Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " equiped " + item.getName());
 				armor.add(item);
-				item.equip();
+				item.equip(owner);
 				inventory.remove(item);
 				return 0;
 			}
@@ -76,6 +76,27 @@ public class Inventory {
 			Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " could not equip non armor item  " + item.getName());
 			return 2;
 		}
+	}
+	
+	public void dequipArmor(Item item){
+		armor.remove(item);
+		inventory.add(item);
+		item.dequip(owner);
+		Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " dequiped  " + item.getName());
+	}
+	
+	public void dequipAccessory(Item item){
+		accessories.remove(item);
+		inventory.add(item);
+		item.dequip(owner);
+		Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " dequiped  " + item.getName());
+	}
+	
+	public void dequipWeapon(Item item){
+		equipedWeapons.remove(item);
+		inventory.add(item);
+		item.dequip(owner);
+		Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " dequiped  " + item.getName());
 	}
 	/*
 	 * Returns: 0 if it worked
@@ -97,7 +118,7 @@ public class Inventory {
 			}else{
 				Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " equiped  " + item.getName());
 				accessories.add(item);
-				item.equip();
+				item.equip(owner);
 				inventory.remove(item);
 				return 0;
 			}
@@ -114,7 +135,7 @@ public class Inventory {
 			return false;
 		}else{
 			Main.log.log(NELOGLEVELS.info, "[Inventory]: " + owner + " equiped  " + item.getName());
-			item.equip();
+			item.equip(owner);
 			equipedWeapons.add(item);
 			inventory.remove(item);
 			return true;

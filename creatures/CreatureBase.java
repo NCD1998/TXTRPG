@@ -2,6 +2,10 @@ package creatures;
 
 import java.util.ArrayList;
 
+import central.Main;
+import logging.NELOGLEVELS;
+import reference.EnumDamageTypes;
+
 public abstract class CreatureBase {
 	private String name;
 	//Vitality
@@ -12,6 +16,7 @@ public abstract class CreatureBase {
 	private double currentMana;
 	private double manaRegeneration;
 	private double castingChance;
+	private double protection;
 	/*
 	 * 0: Strength
 	 * 1: Constitution
@@ -48,5 +53,32 @@ public abstract class CreatureBase {
 
 	public String getName() {
 		return name;
+	}
+
+	public void appyResistanceModifiers(EnumDamageTypes[] resistances2, int[] resistanceAmts) {
+		for(int x = 0; x < resistances2.length; x++){
+			int Arraynum = resistances2[x].getArrayNum();
+			resistanceModifers[Arraynum] += resistanceAmts[x];
+			Main.log.log(NELOGLEVELS.info, "[CreatureBase]: Applied a Resistance Moddifer");
+		}
+	}
+
+	public void removeResistanceModifiers(EnumDamageTypes[] resistances2, int[] resistanceAmts) {
+		for(int x = 0; x < resistances2.length; x++){
+			int Arraynum = resistances2[x].getArrayNum();
+			resistanceModifers[Arraynum] -= resistanceAmts[x];
+			Main.log.log(NELOGLEVELS.info, "[CreatureBase]: Removed a Resistance Moddifer");
+		}
+		
+	}
+
+	public void applyProtection(double protection) {
+		this.protection += protection;
+		
+	}
+
+	public void applyCastingDamage(double castingDamage) {
+		castingChance -= castingDamage;
+		
 	}
 }
